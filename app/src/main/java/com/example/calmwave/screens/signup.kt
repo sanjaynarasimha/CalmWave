@@ -20,6 +20,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -64,7 +65,7 @@ fun Signup(navController: NavHostController) {
 
             // First Name TextField
             Text("First Name")
-            TextField(
+            OutlinedTextField(
                 value = firstname,
                 onValueChange = { firstname = it },
                 modifier = Modifier
@@ -84,7 +85,7 @@ fun Signup(navController: NavHostController) {
 
             // Last Name TextField
             Text("Last Name")
-            TextField(
+            OutlinedTextField(
                 value = lastname,
                 onValueChange = { lastname = it  },
                 modifier = Modifier
@@ -104,7 +105,7 @@ fun Signup(navController: NavHostController) {
 
             // Email TextField
             Text("Email")
-            TextField(
+            OutlinedTextField(
                 value = signup_emailstate,
                 onValueChange = {  signup_emailstate = it  },
                 modifier = Modifier
@@ -124,7 +125,7 @@ fun Signup(navController: NavHostController) {
 
             // Password TextField
             Text("Password")
-            TextField(
+            OutlinedTextField(
                 value = signup_passwordState,
                 onValueChange = {  signup_passwordState = it  },
                 modifier = Modifier
@@ -144,7 +145,7 @@ fun Signup(navController: NavHostController) {
 
             // Re-enter Password TextField
             Text("Re-enter Password")
-            TextField(
+            OutlinedTextField(
                 value = signup_repasswordState,
                 onValueChange = {  signup_repasswordState = it },
                 modifier = Modifier

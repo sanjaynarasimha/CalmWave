@@ -1,19 +1,10 @@
 package com.example.calmwave.screens
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -36,61 +27,53 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.calmwave.R
 
-data class Community(val name: String, val destination: String)
+data class Community(val name: String, val destination: String, val imageRes: Int)
+ {
+}
 
 @Composable
 fun Listofcommunities(navController: NavHostController) {
-    val CommunityList = listOf(
-        Community(name = "Supportive Minds Community", destination = "Comm"),
-        Community(name = "Wellness Together Hub", destination = "Comm"),
-        Community(name = "Mindful Living Circle", destination = "Comm"),
-        Community(name = "Hope and Healing Network", destination = "Comm"),
-        Community(name = "Calm Reflections Group", destination = "Comm"),
-        Community(name = "Emotional Resilience Collective", destination = "Comm"),
-        Community(name = "Mindfulness and Compassion Society", destination = "Comm"),
-        Community(name = "Mental Health Allies Association", destination = "Comm"),
-
-        // Add more comm as needed
+    val communityList = listOf(
+        Community(name = "Get lost in music", destination = "Comm", imageRes = R.drawable.music),
+        Community(name = "Get Moving", destination = "Comm", imageRes = R.drawable.move_on),
+        Community(name = "Unplug and unwind", destination = "Comm", imageRes = R.drawable.unplug),
+        Community(name = "Volunteer", destination = "Comm", imageRes = R.drawable.volenteering),
+        Community(name = "Watch Favourite  Movie", destination = "Comm", imageRes = R.drawable.movie),
+        Community(name = "Keep a journal", destination = "Comm", imageRes = R.drawable.journeling),
+        Community(name = "Join a community", destination = "Comm", imageRes = R.drawable.join_comm),
+        Community(name = "Learn something new", destination = "Comm", imageRes = R.drawable.learn)
     )
 
-//    Column {
-//        Image(
-//
-//            painter = painterResource(id = R.drawable.all_pic), contentDescription = null,
-//            contentScale = ContentScale.Crop,
-//            modifier = Modifier.fillMaxSize()
-//        )
-//    }
-    LazyColumn(
+    // Add more communities with imageRes as needed
+
+    LazyRow(
         modifier = Modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-
-        ) {
-
-        item {
-            Spacer(modifier = Modifier.height(100.dp))
-            Text(text = "List Of Communities",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(android.graphics.Color.parseColor("#ff582f0e")))
-            Spacer(modifier = Modifier.height(40.dp))
-        }
-
-        items(CommunityList) { community ->
+            .fillMaxSize()
+            .padding(vertical = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(15.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) {
+        items(communityList) { community ->
             Box(
                 modifier = Modifier
-                    .fillMaxWidth(0.95f)
+                    .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
                     .clickable { navController.navigate(community.destination) }
             ) {
+                Image(
+                    painter = painterResource(id = community.imageRes),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .width(300.dp)
+                        .height(1000.dp)
+                        .clip(RoundedCornerShape(15.dp)),
+                    contentScale = ContentScale.Crop
+                )
                 Button(
                     onClick = { navController.navigate(community.destination) },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(100.dp)
-                        .background(Color(0xff7209b7)),
+                        .width(300.dp)
+                        .height(1000.dp),
                     colors = ButtonDefaults.buttonColors(
                         Color.Transparent
                     ),
@@ -98,23 +81,23 @@ fun Listofcommunities(navController: NavHostController) {
                     Text(
                         text = community.name,
                         fontSize = 25.sp,
-                        fontWeight = FontWeight.Normal,
-                        color = Color.White
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(16.dp))
         }
     }
+
+    Spacer(modifier = Modifier.height(16.dp))
 
     Column {
         IconButton(
             onClick = { navController.popBackStack() },
-            modifier = Modifier
-                .padding(16.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
         }
-
     }
 }
+
