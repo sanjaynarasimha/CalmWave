@@ -22,14 +22,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -41,7 +38,7 @@ import com.example.calmwave.R
 @Composable
 fun homescreen(navController: NavHostController) {
     // Use remember to create mutable state variables for the text fields
-    val logoImage = painterResource(id = R.drawable.logo)
+    val logoImage = painterResource(id = R.drawable.logogirl)
     var usernameState by remember { mutableStateOf("") }
     var passwordState by remember { mutableStateOf("") }
 
@@ -57,8 +54,8 @@ fun homescreen(navController: NavHostController) {
             painter = logoImage,
             contentDescription = null, // Set a proper content description
             modifier = Modifier
-                .width(300.dp)
-                .height(150.dp)
+                .width(400.dp)
+                .height(300.dp)
                 .padding(10.dp)
         )
 

@@ -4,9 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.calmwave.screens.*
+import com.example.calmwave.screens.Community
+import com.example.calmwave.screens.Forgotpassword
+import com.example.calmwave.screens.Listofcommunities
+import com.example.calmwave.screens.Profile
+import com.example.calmwave.screens.Signup
+import com.example.calmwave.screens.Volunteer
 import com.example.calmwave.screens.homescreen
-import com.example.calmwave.screens.*
 
 @Composable
 fun MyApp() {
@@ -28,9 +32,14 @@ fun MyApp() {
         composable("Listofcommunities") {
             Listofcommunities(navController)
         }
-        composable("Comm") {
-            Comm(navController)
+        composable("Profile") {
+            Profile(navController)
         }
+        composable("Volunteer") {
+            Volunteer(navController)
+        }
+
+
 
 
     }
